@@ -3,6 +3,11 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux' /
 import reducer from './reducer'
 import thunk from 'redux-thunk'
 
+// import createSagaMiddleware from "redux-saga"
+// import mySagas from "./sagas"
+// const sagaMiddleware = createSagaMiddleware()
+ 
+
 // export var store = createStore(
 //     reducer,
 //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()    // 为了使 redux 插件起到作用
@@ -12,6 +17,8 @@ import thunk from 'redux-thunk'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}):compose;
 const enhancer = composeEnhancers(applyMiddleware(thunk))
+// const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware))
+// sagaMiddleware.run(mySagas)
 export var store = createStore(reducer,enhancer)
 
 // function user(state = {name: 'redux'}, action) {

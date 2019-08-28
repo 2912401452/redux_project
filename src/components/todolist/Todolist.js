@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import {store} from '../../store'
-import { changeInputAction,addInput,delete_item,getData } from '../../store/actionCreators'
+import { changeInputAction,addInput,delete_item,getMockData } from '../../store/actionCreators'
 import {TodolistUI} from './TodolistUI'
-import axios from 'axios'
-
+// import { connect } from 'react-redux'
 export default class Todolist extends Component {
     handleStoreChange=()=>{
         // 改变 store 数据
@@ -30,18 +29,8 @@ export default class Todolist extends Component {
         store.dispatch(action)
     }
     componentDidMount() {
-        axios.get('http://jsonplaceholder.typicode.com/posts')
-        .then(res=>{
-            console.log(res)
-            var list = [
-                '11','22','33','44'
-            ]
-            const action = getData(list)
-            store.dispatch(action)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        const action = getMockData()
+        store.dispatch(action)
     }
     render() {
         return (
